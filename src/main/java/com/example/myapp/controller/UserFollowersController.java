@@ -25,7 +25,7 @@ public class UserFollowersController {
 
         try {
             userFollowersService.followUser(userId, followerId);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+            return ResponseEntity.status(HttpStatus.OK).build();
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().build();
         }
@@ -37,7 +37,7 @@ public class UserFollowersController {
             @PathVariable Long followerId) {
 
         userFollowersService.unfollowUser(userId, followerId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{userId}/followers")
